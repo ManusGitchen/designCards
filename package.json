@@ -10,6 +10,7 @@
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' :4173 'cypress open --e2e'"
   },
   "dependencies": {
+    "sass": "^1.56.1",
     "vue": "^3.2.41"
   },
   "devDependencies": {
