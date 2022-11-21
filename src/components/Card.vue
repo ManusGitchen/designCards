@@ -36,13 +36,12 @@ function initials(auth) {
       <div class="card__author">
         <div class="card__author__potrait">{{initials(author)}}</div>
         <div class ="card__author__data">{{author}}<span>{{dateAddedFormat(dateAdded)}}</span></div>
-        
       </div>
       <div class="card__title">{{title}}</div>
     </div>
     <div class="card__footer">
       <div class="card__footer__action">
-        <button>Like</button>
+        <button class="btn btn-outline">Like</button>
       </div>
       <div class="card__footer__likes">{{likes}}</div>
     </div>
@@ -55,11 +54,25 @@ function initials(auth) {
   background: var(--white);
   border-radius: .5rem;
   width: 100%;
+  margin-bottom: 1rem;
+  @media screen and (min-width: 768px) {
+    width: calc(50% - 0.5rem);
+    &:not(:last-child){
+      margin-right: 1rem;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    width: calc(33.3% - 0.5rem);
+    &:not(:last-child){
+      margin-right: 1rem;
+    }
+  }
   &__header{
     &--img{
       height: 8rem;
       width: 100%;
       overflow: hidden;
+      border-radius: .5rem .5rem 0 0;
       & img {
         width: 100%;
 
@@ -80,7 +93,7 @@ function initials(auth) {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: var(--primary);
+      background: var(--primary-variant);
       color: var(--text-dark);
     }
     &__data {
@@ -97,10 +110,15 @@ function initials(auth) {
       }
     }
   }
+  &__title {
+    margin-top: .5rem;
+    font-weight: 600;
+  }
   &__footer {
     padding: 1rem;
     display: flex;
     justify-content: space-between;
   }
 }
+
 </style>

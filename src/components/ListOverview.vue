@@ -1,24 +1,39 @@
+<script>
+import { defineComponent } from 'vue'
+export default defineComponent({
+  mounted() {
+    this.$store.dispatch('getInitialData')
+  },
+  computed: {
+    layouts(){
+      return this.$store.getters.getAllProducts
+    }
+  }
+})
+</script>
 <script setup>
 import Card from './Card.vue'
-import layouts from '../api.json'
 </script>
 <template>
-  <div class="container grid-container">
-    <div v-for="layout in layouts.payload.data" :key="layout.id" :class="'item'+layout.id">
-      <Card
-        :title="layout.title"
-        :author="layout.author"
-        :dateAdded="layout.dateAdded"
-        :images="layout.images"
-        :likes="layout.likes"
-      />
-
-    </div>
+  <div class="container flex-container">
+    <Card
+      v-for="layout in layouts" 
+      :key="layout.id"
+      :title="layout.title"
+      :author="layout.author"
+      :dateAdded="layout.dateAdded"
+      :images="layout.images"
+      :likes="layout.likes"
+    />
   </div>  
 </template>
 
 <style lang="scss" scoped>
 .container {
   margin-top: 4rem;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
