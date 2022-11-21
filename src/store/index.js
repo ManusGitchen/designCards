@@ -6,7 +6,8 @@ export default createStore({
   state: {
     errorMessage: {},
     // If there are more details, it would make sense to split the store in namespaced modules
-    products: []
+    products: [],
+    usersLikes: []
   },
   getters: {
     getAllProducts:(state) => {
@@ -14,6 +15,9 @@ export default createStore({
     },
     getErrorMessage:(state) => {
       return state.errorMessage
+    },
+    getAllUserLikes:(state) => {
+      return state.usersLikes
     }
   },
   mutations: {
@@ -22,6 +26,19 @@ export default createStore({
     },
     setErrorState(state, errorMsg){
       state.errorMessage = errorMsg
+    },
+    addLike(state, clickedID) {
+      state.usersLikes.push(clickedID)
+      const product = state.products.find(product => product.id === clickedID)
+      product.likes += 1
+    },
+    removeLike(state, clickedID) {
+      const index = state.usersLikes.indexOf(clickedID);
+      if (index > -1) { 
+        state.usersLikes.splice(index, 1)
+        const product = state.products.find(product => product.id === clickedID)
+        product.likes -= 1
+      }
     }
   },
   actions: {
@@ -57,5 +74,13 @@ export default createStore({
       //   }
       // })
     },
+    /**
+     * 
+     * @param {*} product the liked product id
+     */
+    likeCount({state, commit},likedProduct){
+      console.log(likedProduct)
+      state.products.findIndex(product => product.id === likedProduct.id)
+    }
   },
 })

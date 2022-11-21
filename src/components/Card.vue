@@ -1,13 +1,21 @@
 <script setup>
+import { defineEmits } from 'vue'
 const props = defineProps({
+  id: Number,
   title: String,
   author: String,
   dateAdded: String,
   images: Object,
-  likes: String
+  likes: Number,
+  userLike: Boolean
 })
-
+const emit= defineEmits(["enlargeText"])
+function incLikes(id) {
+      emit("clickLike", id);
+    }
+ 
 //methods
+
 function initials(auth) {
     const author = auth.split(' ')
     if(author.length <= 1) {
@@ -41,9 +49,15 @@ function initials(auth) {
     </div>
     <div class="card__footer">
       <div class="card__footer__action">
-        <button class="btn btn-outline">Like</button>
+        <button 
+        class="btn btn-outline"
+        :class="{'btn-outline--is-active': userLike}"
+        v-on:click="incLikes(id)"
+        >
+          Like
+        </button>
       </div>
-      <div class="card__footer__likes">{{likes}}</div>
+      <div class="card__footer__likes">{{likes}} Likes</div>
     </div>
 
   </div>
@@ -56,15 +70,18 @@ function initials(auth) {
   width: 100%;
   margin-bottom: 1rem;
   @media screen and (min-width: 768px) {
-    width: calc(50% - 0.5rem);
-    &:not(:last-child){
+    width: calc(50% - .5rem);
+    &:not(:nth-child(2n)){
       margin-right: 1rem;
     }
   }
-  @media screen and (min-width: 768px) {
-    width: calc(33.3% - 0.5rem);
-    &:not(:last-child){
-      margin-right: 1rem;
+  @media screen and (min-width: 920px) {
+    width: calc(33.3333% - .7rem);
+    &:not(:nth-child(2n)){
+      margin-right: 0;
+    }
+    &:not(:nth-child(3n)){
+    margin-right: 1rem;
     }
   }
   &__header{
@@ -118,6 +135,11 @@ function initials(auth) {
     padding: 1rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    &__likes {
+      font-size: small;
+      color: var(--text-accent);
+    }
   }
 }
 

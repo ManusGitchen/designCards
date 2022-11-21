@@ -30,11 +30,14 @@ header {
     width: 100%;
     height: 100%;
     display: flex;
+    padding: 0 1rem;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 95%);
   }
   & .page-title {
     font-size: 1.7rem;
   }
 }
-
+main {
+  padding: 0 1rem;
+}
 </style>

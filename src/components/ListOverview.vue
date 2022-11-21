@@ -7,8 +7,23 @@ export default defineComponent({
   computed: {
     layouts(){
       return this.$store.getters.getAllProducts
+    },
+    userLikes(){
+      return this.$store.getters.getAllUserLikes
     }
-  }
+  },
+  methods: {
+    onClickLike(clickedID) {
+      const allLikes = this.$store.getters.getAllUserLikes
+      if(allLikes.length <= 0 || !allLikes.includes(clickedID)) {
+        this.$store.commit('addLike', clickedID)
+      }else if(allLikes.includes(clickedID)){
+        this.$store.commit('removeLike', clickedID)
+      }else{
+        this.$store.commit('setErrorState', {"status": "failed", "code": "", "text": "something went wrong. Can not like a product"})
+      }
+    },
+  },
 })
 </script>
 <script setup>
@@ -19,11 +34,14 @@ import Card from './Card.vue'
     <Card
       v-for="layout in layouts" 
       :key="layout.id"
+      :id="layout.id"
       :title="layout.title"
       :author="layout.author"
       :dateAdded="layout.dateAdded"
       :images="layout.images"
       :likes="layout.likes"
+      :userLike="userLikes.includes(layout.id)"
+      @clickLike="onClickLike"
     />
   </div>  
 </template>
