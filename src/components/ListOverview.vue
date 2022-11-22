@@ -48,7 +48,10 @@ import Card from './Card.vue'
 
 <style lang="scss" scoped>
 .container {
-  margin-top: 4rem;
+  margin-top: 6rem;
+  @media screen and (min-width: 768px) {
+    margin-top: 4rem;
+  }
 }
 .flex-container {
   display: flex;

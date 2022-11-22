@@ -71,6 +71,8 @@ body {
     background: var(--white);
     outline: none;
   }
+  &--control{
+  }
 }
 
 .checkbox input[type="checkbox"] {
@@ -90,6 +92,7 @@ body {
 .checkbox label {
   position: relative;
   padding-left: 22px;
+  color: var(--text-accent);
   &::before, &::after {
     position: absolute;
     content: "";

@@ -9,14 +9,14 @@ const props = defineProps({
   likes: Number,
   userLike: Boolean
 })
-const emit= defineEmits(["enlargeText"])
-function incLikes(id) {
-      emit("clickLike", id);
-    }
- 
 //methods
 
-function initials(auth) {
+const emit= defineEmits(["enlargeText"])
+  function incLikes(id) {
+    emit("clickLike", id);
+  }
+
+  function initials(auth) {
     const author = auth.split(' ')
     if(author.length <= 1) {
       author.push('Name')
@@ -26,23 +26,29 @@ function initials(auth) {
     initials = (firstname+lastname).toUpperCase()
     return initials
   }
+
   function dateAddedFormat(dateAdded) {
-    const date = new Date(dateAdded);
+    const date = new Date(dateAdded)
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString('de-DE', options)
+  }
+
+  function sourceSet(){
+    const bigImg = images[0].landscape[0]
+    const smallImg = images[0].landscape[1]
+    return smallImg+' 768w, '+bigImg+' 920w'
+    // srcset="image-320w.jpg 320w, image-480w.jpg 480w"
   }
 </script>
 <template>
   <div class="card">
     <div class="card__header">
       <div class="card__header--img">
-        <v-lazy-image
-          :srcset="images[0].landscape"
-          sizes="(max-width: 768px) 1600px, 800px"
-          :src="images[0].landscape[0]"
+        <img 
+        :src="images[0].landscape[1]"
+        :srcset="sourceSet"
+        sizes="(max-width: 768px) 100vw, 1024px"
         />
-        <!-- {{imagayyyes}} -->
-        <!-- <img :src="images.landscape[0]"/> -->
       </div>
     </div>
 
