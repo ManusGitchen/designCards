@@ -7,7 +7,9 @@ export default defineComponent({
       options: [
         {type: 'auth', text: 'Alphabetical'}, 
         {type: 'inc', text: 'Date inc'},
-        {type: 'dec', text: 'Date dec'}]
+        {type: 'dec', text: 'Date dec'}
+      ],
+      search: ''
     }
   },
   methods: {
@@ -16,6 +18,12 @@ export default defineComponent({
     },
     latestOnly(){
       this.$store.dispatch('filterLatestProducts', this.checked)
+    },
+    searchProducts(){
+      this.search != ''
+      ? this.$store.dispatch('searchProducts', this.search)
+      : this.$store.dispatch('resetSearch')
+      
     }
   }
 
@@ -24,8 +32,17 @@ export default defineComponent({
 <template>
   <div class="container">
     <div class="nav">
-      filter by title, author...
-      <select class="form-control" @change="sortProducts($event)">
+      <div class="search-container">
+        <img src="../assets/search-icon.svg"/>
+        <input
+        class="form form--search"
+        type="search"
+        placeholder="filter by title, author..."
+        v-model="search"
+        @input="searchProducts"
+        />
+      </div>
+      <select class="form form--control" @change="sortProducts($event)">
         <option value="" disabled selected>Select your option</option>
         <option 
         v-for="option in options" 
@@ -34,16 +51,17 @@ export default defineComponent({
           {{option.text}}
         </option>
       </select>
-      <input 
-      type="checkbox" 
-      id="checkbox" 
-      v-model="checked"
-      @change="latestOnly()"
-      />
-      <label for="checkbox">Lastest only</label>
-
+      <div class="checkbox">
+        <input 
+        type="checkbox" 
+        id="checkbox" 
+        class="form form--checkbox"
+        v-model="checked"
+        @change="latestOnly()"
+        />
+        <label for="checkbox">Lastest only</label>
+      </div>
     </div>
-
   </div>
 </template>
 
@@ -55,5 +73,12 @@ export default defineComponent({
     right: 0;
     width: calc(100% - 2rem);
     transform: translateY(50%);
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+    & img {
+      margin-right: .5rem;
+    }
   }
 </style>

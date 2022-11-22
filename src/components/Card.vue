@@ -36,7 +36,13 @@ function initials(auth) {
   <div class="card">
     <div class="card__header">
       <div class="card__header--img">
-        <img :src="images.landscape[0]"/>
+        <v-lazy-image
+          :srcset="images[0].landscape"
+          sizes="(max-width: 768px) 1600px, 800px"
+          :src="images[0].landscape[0]"
+        />
+        <!-- {{imagayyyes}} -->
+        <!-- <img :src="images.landscape[0]"/> -->
       </div>
     </div>
 
@@ -57,7 +63,9 @@ function initials(auth) {
           Like
         </button>
       </div>
-      <div class="card__footer__likes">{{likes}} Likes</div>
+      <div class="card__footer__likes">
+        <img src="../assets/heart-icon.svg">
+        {{likes}} Likes</div>
     </div>
 
   </div>
@@ -137,8 +145,14 @@ function initials(auth) {
     justify-content: space-between;
     align-items: center;
     &__likes {
+      display: flex;
+      align-items: center;
       font-size: small;
       color: var(--text-accent);
+      & img {
+        height: 1rem;
+        margin-right: .25rem;
+      }
     }
   }
 }

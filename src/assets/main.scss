@@ -1,4 +1,4 @@
-@import './base.scss';
+@import './_variables.scss';
 
 body {
   margin: 0;
@@ -27,9 +27,15 @@ body {
 .nav {
   background: var(--white);
   padding: 1rem 1.5rem;
-  // margin: 0 1rem;
   color: var(--text-accent);
   border-radius: .5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .btn {
@@ -48,5 +54,62 @@ body {
       background: var(--primary);
       color: var(--text-dark);
     }
+  }
+}
+
+.form {
+  border: 0;
+  background: var(--white);
+  color: var(--text-accent);
+  font-size: 1em;
+  margin: .5rem 0;
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+  &:focus, &:hover, &:active, &:focus-visible{
+    border: 0;
+    background: var(--white);
+    outline: none;
+  }
+}
+
+.checkbox input[type="checkbox"] {
+  opacity: 0;
+  /*Hide the checkmark by default*/
+  & + label::after {
+    content: none;
+  }
+  &:checked + label::after {
+    content: "";
+  }
+  &:focus + label::before {
+    outline: none;
+  }
+}
+
+.checkbox label {
+  position: relative;
+  padding-left: 22px;
+  &::before, &::after {
+    position: absolute;
+    content: "";
+    display: inline-block;
+  }
+  &::before {
+    height: 16px;
+    width: 16px;
+    border: 0;
+    left: 0px;
+    top: 3px;
+    background-color: var(--background);
+  }
+  &::after {
+    height: 5px;
+    width: 9px;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    transform: rotate(-45deg);
+    left: 3px;
+    top: 6px;
   }
 }

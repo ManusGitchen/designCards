@@ -1,5 +1,5 @@
-// import axios from 'axios' //for http request preparation
-import apiRes from '../api.json'
+import axios from 'axios'
+// import apiRes from '../api.json'
 import { createStore } from 'vuex'
 
 export default createStore({
@@ -43,42 +43,23 @@ export default createStore({
         const product = state.products.find(product => product.id === clickedID)
         product.likes -= 1
       }
-    }
+    },
   },
   actions: {
     /**
-     * I mock the api response with an import of api.json,
-     * but the following includes the preparation for a real api call (commented part)
      * @param {*} param0 
      */
     getInitialData({commit,dispatch}) {
-      const res = apiRes
-      if(res.message.status === 'success') {
-        commit('setProducts', res.payload.data)
+      axios.get('http://localhost:8010/proxy')
+      .then(response =>{
+        let res = response.data
+        commit('setProducts', res.payload.data),
         commit('setFilteredProducts', res.payload.data)
-        commit('setErrorState', res.message)
-      }
-      else {
-        dispatch('apiErrorHandling', res.message)
-      }
+      })
+  },
 
-      ///////////////////// --- HTTP Request Preparation --- /////////////////////
-      // axios ({
-      //   url:'https://www.myposter.de/apicall',
-      //   method:'post',
-      //   data: {
-      //     query:`some query if needed`
-      //   }
-      // }).then(res =>{
-      //   if(res.message.status === 'success') {
-      //   commit('setProducts', res.payload.data)
-      //   commit('setErrorState', res.message)
-      //   }
-      //   else {
-      //     dispatch('apiErrorHandling', res.message)
-      //   }
-      // })
-    },
+
+
     /**
      * 
      * @param {*} product the liked product id
@@ -112,6 +93,13 @@ export default createStore({
       } else {
         commit('setFilteredProducts', state.products)
       }
+    },
+    searchProducts({state,commit},value){
+      const searchedProducts = state.products.filter(product => (product.title.toLowerCase().includes(value)) || product.author.toLowerCase().includes(value))
+      commit('setFilteredProducts', searchedProducts)
+    },
+    resetSearch({state, commit}){
+      commit('setFilteredProducts', state.products)
     }
   },
 })
