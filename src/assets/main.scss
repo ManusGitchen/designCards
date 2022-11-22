@@ -12,6 +12,7 @@ body {
   font-size: 16px;
 }
 
+// responsive container for page layout.
 .container {
   width: 100%;
   max-width: 320px;
@@ -24,20 +25,8 @@ body {
   }
 }
 
-.nav {
-  background: var(--white);
-  padding: 1rem 1.5rem;
-  color: var(--text-accent);
-  border-radius: .5rem;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-
+// gobal button style. 
+// For more button and easy theming, create mixin with variable color
 .btn {
   padding: .25rem .75rem;
   border-radius: .5rem;
@@ -57,6 +46,7 @@ body {
   }
 }
 
+// global form styling (input, select, checkbox)
 .form {
   border: 0;
   background: var(--white);
@@ -71,13 +61,11 @@ body {
     background: var(--white);
     outline: none;
   }
-  &--control{
-  }
 }
 
+// custom checkbox styling: hide default checkbox
 .checkbox input[type="checkbox"] {
   opacity: 0;
-  /*Hide the checkmark by default*/
   & + label::after {
     content: none;
   }
@@ -89,6 +77,7 @@ body {
   }
 }
 
+//custom checkbox styling: create checkbox from helper classes (before and after)
 .checkbox label {
   position: relative;
   padding-left: 22px;

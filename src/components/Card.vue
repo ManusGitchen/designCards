@@ -9,13 +9,21 @@ const props = defineProps({
   likes: Number,
   userLike: Boolean
 })
-//methods
 
-const emit= defineEmits(["enlargeText"])
+//methods
+  const emit= defineEmits(["enlargeText"])
+/**
+ * Emit the click on like button to parent
+ * @param {*} id layout id
+ */
   function incLikes(id) {
     emit("clickLike", id);
   }
 
+  /**
+   * Creates the first Letters of author name
+   * @param {*} auth author name from layout
+   */
   function initials(auth) {
     const author = auth.split(' ')
     if(author.length <= 1) {
@@ -27,18 +35,16 @@ const emit= defineEmits(["enlargeText"])
     return initials
   }
 
+  /**
+   * Creates the date in german format (day: number, month: short word, full year: number)
+   * @param {*} dateAdded date, when the layout was added
+   */
   function dateAddedFormat(dateAdded) {
     const date = new Date(dateAdded)
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString('de-DE', options)
   }
 
-  function sourceSet(){
-    const bigImg = images[0].landscape[0]
-    const smallImg = images[0].landscape[1]
-    return smallImg+' 768w, '+bigImg+' 920w'
-    // srcset="image-320w.jpg 320w, image-480w.jpg 480w"
-  }
 </script>
 <template>
   <div class="card">
@@ -46,7 +52,7 @@ const emit= defineEmits(["enlargeText"])
       <div class="card__header--img">
         <img 
         :src="images[0].landscape[1]"
-        :srcset="sourceSet"
+        :srcset="images[0].landscape[1] +' 768w, ' + images[0].landscape[0] + ' 920w'"
         sizes="(max-width: 768px) 100vw, 1024px"
         />
       </div>

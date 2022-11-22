@@ -2,19 +2,28 @@
 import { defineComponent } from 'vue'
 export default defineComponent({
   mounted() {
+    //fetch data on mount and fill it in state
     this.$store.dispatch('getInitialData')
   },
   computed: {
+    // get all layouts from store
     layouts(){
       return this.$store.getters.getAllProducts
     },
+    // get all liked products
     userLikes(){
       return this.$store.getters.getAllUserLikes
     }
   },
   methods: {
+    /**
+     * Get the click event from child and handle the user likes.
+     * If product is already liked by the user, the like will be removed
+     * Otherwise the like will be added
+     * @param {*} clickedID Id of the liked layout
+     */
     onClickLike(clickedID) {
-      const allLikes = this.$store.getters.getAllUserLikes
+      const allLikes = this.userLikes
       if(allLikes.length <= 0 || !allLikes.includes(clickedID)) {
         this.$store.commit('addLike', clickedID)
       }else if(allLikes.includes(clickedID)){
