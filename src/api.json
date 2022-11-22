@@ -8,9 +8,9 @@
     "data": [
       {
         "id": 1,
-        "author": "author",
-        "title": "title",
-        "dateAdded": "1970-01-01",
+        "author": "author x",
+        "title": "titlea",
+        "dateAdded": "1970-03-01",
         "images": {
           "portrait": [
             "https://picsum.photos/200/100",
@@ -26,127 +26,8 @@
       {
         "id": 2,
         "author": "author Test",
-        "title": "title",
-        "dateAdded": "1970-01-01",
-        "images": {
-          "portrait": [
-            "https://www.image-source",
-            "https://www.image-source"
-          ],
-          "landscape": [
-            "https://picsum.photos/400/200",
-            "https://picsum.photos/200/100"
-          ]
-        },
-        "likes": 3
-      },
-      {
-        "id": 2,
-        "author": "author Test",
-        "title": "title",
-        "dateAdded": "1970-01-01",
-        "images": {
-          "portrait": [
-            "https://www.image-source",
-            "https://www.image-source"
-          ],
-          "landscape": [
-            "https://picsum.photos/400/200",
-            "https://picsum.photos/200/100"
-          ]
-        },
-        "likes": 3
-      },
-      {
-        "id": 2,
-        "author": "author Test",
-        "title": "title",
-        "dateAdded": "1970-01-01",
-        "images": {
-          "portrait": [
-            "https://www.image-source",
-            "https://www.image-source"
-          ],
-          "landscape": [
-            "https://picsum.photos/400/200",
-            "https://picsum.photos/200/100"
-          ]
-        },
-        "likes": 3
-      },
-      {
-        "id": 2,
-        "author": "author Test",
-        "title": "title",
-        "dateAdded": "1970-01-01",
-        "images": {
-          "portrait": [
-            "https://www.image-source",
-            "https://www.image-source"
-          ],
-          "landscape": [
-            "https://picsum.photos/400/200",
-            "https://picsum.photos/200/100"
-          ]
-        },
-        "likes": 3
-      },
-      {
-        "id": 2,
-        "author": "author Test",
-        "title": "title",
-        "dateAdded": "1970-01-01",
-        "images": {
-          "portrait": [
-            "https://www.image-source",
-            "https://www.image-source"
-          ],
-          "landscape": [
-            "https://picsum.photos/400/200",
-            "https://picsum.photos/200/100"
-          ]
-        },
-        "likes": 3
-      },
-      {
-        "id": 2,
-        "author": "author Test",
-        "title": "title",
-        "dateAdded": "1970-01-01",
-        "images": {
-          "portrait": [
-            "https://www.image-source",
-            "https://www.image-source"
-          ],
-          "landscape": [
-            "https://picsum.photos/400/200",
-            "https://picsum.photos/200/100"
-          ]
-        },
-        "likes": 3
-      },
-      {
-        "id": 2,
-        "author": "author Test",
-        "title": "title",
-        "dateAdded": "1970-01-01",
-        "images": {
-          "portrait": [
-            "https://www.image-source",
-            "https://www.image-source"
-          ],
-          "landscape": [
-            "https://picsum.photos/400/200",
-            "https://picsum.photos/200/100"
-          ]
-        },
-        "likes": 3
-      },
-      {
-        "id": 2,
-        "author": "author Test",
-        "title": "title",
-        "dateAdded": "1970-01-01",
+        "title": "titles",
+        "dateAdded": "1922-01-01",
         "images": {
           "portrait": [
             "https://www.image-source",
