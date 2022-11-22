@@ -8,5 +8,5 @@ import './assets/main.scss'
 
 const app = createApp(App).use(vuexStore)
 app.use(VueAxios, axios)
-app.provide('axios', app.config.globalProperties.axios)  // provide 'axios'
+app.provide('axios', app.config.globalProperties.axios) 
 app.mount('#app')
