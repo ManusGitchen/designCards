@@ -97,11 +97,12 @@ export default createStore({
     /**
      * Fetch data from api
      * For CORS issues in dev mode, used the Local CORS Proxy (https://github.com/garmeeh/local-cors-proxy)
-     * For running without proxy, change the URL to 'https://myposter.de/web-api/job-interview'
+     * by running npm run proxy local
+     * For running without proxy, change the URL to 'https://myposter.de/web-api/job-interview' and block CORS Issues
      * @param {*} param0 
      */
-    getInitialData({commit,dispatch}) {
-      axios.get('http://localhost:8010/proxy')
+    getInitialData({commit}) {
+      axios.get('http://127.0.0.1:8010/proxy')
       .then(response =>{
         let res = response.data
         commit('setProducts', res.payload.data),

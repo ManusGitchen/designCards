@@ -89,6 +89,9 @@ const props = defineProps({
   border-radius: .5rem;
   width: 100%;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   @media screen and (min-width: 768px) {
     width: calc(50% - .5rem);
     &:not(:nth-child(2n)){
